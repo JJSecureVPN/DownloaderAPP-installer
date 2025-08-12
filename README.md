@@ -5,7 +5,7 @@
 [![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Ubuntu%20%7C%20Debian-lightgrey.svg)](#)
 [![Domain](https://img.shields.io/badge/domain-vps.jhservices.com.ar-orange.svg)](#)
 
-> **Sistema avanzado de subida de archivos APK con gestión persistente y interfaz moderna y scrollbars personalizados**
+> **Sistema avanzado de subida de archivos APK con gestión persistente y interfaz moderna**
 
 ## ✨ Características Principales
 
@@ -185,14 +185,14 @@ pip3 install Flask==2.3.3 gevent==23.7.0
 
 ## 📝 Changelog
 
-### v2.1 (Agosto 2025) - ��� UI Moderna
-- ✨ **Scrollbars personalizados** con gradientes y efectos de hover
-- ✨ **Posicionamiento perfecto** respetando bordes redondeados
-- ✨ **Background-clip técnico** para separación natural
-- ✨ **Animaciones fluidas** y efectos de glow profesionales
-- ✨ **Compatibilidad completa** webkit y Firefox
-- ��� **Padding optimizado** para evitar overflow visual
-- ��� **Responsive mejorado** para dispositivos móviles
+### v2.1 (Agosto 2025) - UI Moderna
+- Scrollbars personalizados con gradientes y efectos de hover
+- Posicionamiento perfecto respetando bordes redondeados
+- Background-clip técnico para separación natural
+- Animaciones fluidas y efectos de glow profesionales
+- Compatibilidad completa webkit y Firefox
+- Padding optimizado para evitar overflow visual
+- Responsive mejorado para dispositivos móviles
 
 ### v2.0 (Actual)
 - ✨ Sistema de gestión de archivos persistente
