@@ -1,9 +1,9 @@
 # MODO DE INSTALACIÓN - DESCARGADOR
 
 ```
-bash <(curl -sL https://raw.githubusercontent.com/JJSecureVPN/DownloaderAPP/master/install.sh)
+bash <(curl -sL https://raw.githubusercontent.com/JJSecureVPN/DownloaderAPP/main/install.sh)
 ```
 
-# Por: [@DuTra01](https://t.me/DuTra01)
+# Por: [@JHServices](https://t.me/JHServices)
 
-![Captura de pantalla](https://raw.githubusercontent.com/JJSecureVPN/DownloaderAPP/master/screenshot.png)
+![Captura de pantalla](https://raw.githubusercontent.com/JJSecureVPN/DownloaderAPP/main/screenshot.png)
