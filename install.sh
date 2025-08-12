@@ -669,8 +669,8 @@ read -p "   ¿Ejecutar en segundo plano? (y/N): " background
 echo ""
 echo "🚀 Iniciando DownloaderAPP..."
 
-# Obtener IP pública
-PUBLIC_IP=$(curl -4s https://api.ipify.org 2>/dev/null || echo "localhost")
+# Obtener dominio configurado
+DOMAIN="vps.jhservices.com.ar"
 
 if [[ $background =~ ^[Yy]$ ]]; then
     # Ejecutar en segundo plano
@@ -699,7 +699,7 @@ echo "🎉 ¡DownloaderAPP instalado correctamente!"
 echo ""
 echo "🌐 Accede desde:"
 echo "   📱 Local:    http://localhost:$port"
-echo "   🌍 Público:  http://$PUBLIC_IP:$port"
+echo "   🌍 Público:  http://$DOMAIN:$port"
 echo ""
 echo "📁 Directorio: $(pwd)"
 echo "📋 Creado por: @JHServices"
