@@ -1,6 +1,13 @@
 # 🚀 DownloaderAPP - Instalador
 
-Un script de instalación automática para **DownloaderAPP**, una aplicación web para subir y compartir archivos APK de manera fácil y rápida.
+Un script de instalación autom### 🚀 Uso
+
+### 1. Accede a la aplicación
+```
+http://vps.jhservices.com.ar:5001
+```
+
+### 2. Sube tu archivo APKra **DownloaderAPP**, una aplicación web para subir y compartir archivos APK de manera fácil y rápida.
 
 ![APK Uploader](https://img.shields.io/badge/APK-Uploader-green.svg)
 ![Python](https://img.shields.io/badge/Python-3.6+-blue.svg)
