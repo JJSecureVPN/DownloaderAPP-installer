@@ -1,55 +1,39 @@
-# íº€ DownloaderAPP - Instalador PÃºblico
+# ğŸš€ DownloaderAPP - Instalador PÃºblico
 
-[![Version](https://img.shields.io/badge/version-2.1-blue.svg)](https://github.com/JJSecureVPN/DownloaderAPP-installer)
+[![Version](https://img.shields.io/badge/version-2.0-blue.svg)](https://github.com/JJSecureVPN/DownloaderAPP-installer)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Ubuntu%20%7C%20Debian-lightgrey.svg)](#)
 [![Domain](https://img.shields.io/badge/domain-vps.jhservices.com.ar-orange.svg)](#)
 
-> **Sistema avanzado de subida de archivos APK con gestiÃ³n persistente, interfaz moderna y scrollbars personalizados**
-
-## âœ¨ Nuevas CaracterÃ­sticas v2.1 (Agosto 2025)
-
-### í¾¨ **Scrollbars Modernos & DiseÃ±o Glassmorphism**
-- **Scrollbars personalizados** con gradientes y efectos de hover
-- **Posicionamiento perfecto** que respeta bordes redondeados
-- **Animaciones suaves** y efectos de glow profesionales
-- **Compatibilidad completa** webkit (Chrome, Safari) y Firefox
-- **Background-clip tÃ©cnico** para separaciÃ³n natural del contenido
-
-### í´§ **Mejoras TÃ©cnicas UI**
-- **Padding interno optimizado** para evitar overflow visual
-- **Transiciones fluidas** en todos los elementos interactivos
-- **Responsive design mejorado** para dispositivos mÃ³viles
-- **IntegraciÃ³n perfecta** con el tema glassmorphism existente
+> **Sistema avanzado de subida de archivos APK con gestiÃ³n persistente y interfaz moderna**
 
 ## âœ¨ CaracterÃ­sticas Principales
 
-### í´„ **Sistema de GestiÃ³n Persistente**
+### ğŸ”„ **Sistema de GestiÃ³n Persistente**
 - **Almacenamiento permanente**: Los archivos no se eliminan automÃ¡ticamente
 - **GestiÃ³n de duplicados**: Modal interactivo con opciones de resoluciÃ³n
 - **Control total**: Elimina archivos individualmente o en lote
 
-### í³± **Interfaz Moderna**
+### ğŸ“± **Interfaz Moderna**
 - **Drag & Drop**: Arrastra archivos directamente al navegador
 - **Responsive**: Optimizado para mÃ³viles y escritorio
 - **Animaciones**: Efectos visuales suaves y profesionales
 - **Tema moderno**: Gradientes y efectos de cristal
-- **Scrollbars Ãºnicos**: DiseÃ±o personalizado que se integra perfectamente
 
-### í» ï¸ **API REST Completa**
+### ğŸ› ï¸ **API REST Completa**
 - `GET /files` - Lista todos los archivos disponibles
 - `POST /upload` - Subir archivo con gestiÃ³n de duplicados
 - `DELETE /delete/<filename>` - Eliminar archivo especÃ­fico
 - `POST /clear` - Limpiar todos los archivos
 - `GET /download/<filename>` - Descargar archivo
 
-### í´’ **GestiÃ³n de Duplicados**
+### ğŸ”’ **GestiÃ³n de Duplicados**
 Cuando subes un archivo que ya existe, obtienes 3 opciones:
-- **í´„ Reemplazar**: Sobrescribe el archivo existente
-- **í³ Mantener ambos**: Guarda con timestamp Ãºnico
+- **ğŸ”„ Reemplazar**: Sobrescribe el archivo existente
+- **ğŸ“ Mantener ambos**: Guarda con timestamp Ãºnico
 - **âŒ Cancelar**: Cancela la operaciÃ³n
 
-## íº€ InstalaciÃ³n RÃ¡pida
+## ğŸš€ InstalaciÃ³n RÃ¡pida
 
 ### MÃ©todo 1: Una lÃ­nea (Recomendado)
 ```bash
@@ -68,7 +52,7 @@ curl -O https://raw.githubusercontent.com/JJSecureVPN/DownloaderAPP-installer/ma
 sudo bash install.sh
 ```
 
-## í³‹ Requisitos del Sistema
+## ğŸ“‹ Requisitos del Sistema
 
 - **OS**: Linux (Ubuntu 18.04+, Debian 9+, CentOS 7+)
 - **Python**: 3.6 o superior
@@ -76,28 +60,28 @@ sudo bash install.sh
 - **Memoria**: MÃ­nimo 512MB RAM
 - **Espacio**: 100MB libres
 
-## í¾¯ Proceso de InstalaciÃ³n
+## ğŸ¯ Proceso de InstalaciÃ³n
 
 El instalador automÃ¡tico realizarÃ¡:
 
-1. **í³¦ InstalaciÃ³n de dependencias**
+1. **ğŸ“¦ InstalaciÃ³n de dependencias**
    - Git, Python3, pip3, screen, curl
 
-2. **í³ CreaciÃ³n del proyecto**
+2. **ğŸ“ CreaciÃ³n del proyecto**
    - Estructura completa de directorios
    - Archivos Python con toda la lÃ³gica
-   - Templates HTML y CSS modernos con scrollbars personalizados
+   - Templates HTML y CSS modernos
 
-3. **í° ConfiguraciÃ³n de Python**
+3. **ğŸ ConfiguraciÃ³n de Python**
    - InstalaciÃ³n de Flask y Gevent
    - ConfiguraciÃ³n del entorno virtual
 
-4. **íº€ Inicio del servidor**
+4. **ğŸš€ Inicio del servidor**
    - ConfiguraciÃ³n del puerto personalizado
    - EjecuciÃ³n en screen session
    - URLs de acceso automÃ¡ticas
 
-## í´§ GestiÃ³n del Servidor
+## ğŸ”§ GestiÃ³n del Servidor
 
 ### Comandos BÃ¡sicos
 ```bash
@@ -125,7 +109,7 @@ cd DownloaderAPP
 screen -dmS downloader python3 main.py 8080
 ```
 
-## í¼ URLs de Acceso
+## ğŸŒ URLs de Acceso
 
 DespuÃ©s de la instalaciÃ³n, accede a:
 
@@ -133,7 +117,7 @@ DespuÃ©s de la instalaciÃ³n, accede a:
 - **URL con Dominio**: `http://vps.jhservices.com.ar:PUERTO`
 - **URL con IP PÃºblica**: `http://TU_IP_PUBLICA:PUERTO`
 
-## í³± Uso de la AplicaciÃ³n
+## ğŸ“± Uso de la AplicaciÃ³n
 
 ### Subir Archivos
 1. Arrastra un archivo APK al Ã¡rea de subida
@@ -143,12 +127,12 @@ DespuÃ©s de la instalaciÃ³n, accede a:
 
 ### Gestionar Archivos
 - **Ver lista**: Se muestra automÃ¡ticamente si hay archivos
-- **Copiar enlace**: BotÃ³n í³‹ junto a cada archivo
+- **Copiar enlace**: BotÃ³n ğŸ“‹ junto a cada archivo
 - **Descargar**: BotÃ³n â¬‡ï¸ para descarga directa
-- **Eliminar**: BotÃ³n í·‘ï¸ para eliminar especÃ­fico
+- **Eliminar**: BotÃ³n ğŸ—‘ï¸ para eliminar especÃ­fico
 - **Limpiar todo**: BotÃ³n para eliminar todos los archivos
 
-## í»¡ï¸ Seguridad
+## ğŸ›¡ï¸ Seguridad
 
 - âœ… Solo acepta archivos `.apk`
 - âœ… ValidaciÃ³n de tipos de archivo
@@ -156,7 +140,7 @@ DespuÃ©s de la instalaciÃ³n, accede a:
 - âœ… Control de duplicados
 - âœ… GestiÃ³n de errores completa
 
-## í´„ ActualizaciÃ³n
+## ğŸ”„ ActualizaciÃ³n
 
 Para actualizar a la Ãºltima versiÃ³n:
 
@@ -168,7 +152,7 @@ screen -S downloader -X quit
 sudo bash <(curl -s https://raw.githubusercontent.com/JJSecureVPN/DownloaderAPP-installer/main/install.sh)
 ```
 
-## í°› SoluciÃ³n de Problemas
+## ğŸ› SoluciÃ³n de Problemas
 
 ### Error de permisos
 ```bash
@@ -193,24 +177,15 @@ sudo apt install python3 python3-pip git screen curl -y
 pip3 install Flask==2.3.3 gevent==23.7.0
 ```
 
-## í³ Soporte
+## ğŸ“ Soporte
 
 - **GitHub Issues**: [Reportar problema](https://github.com/JJSecureVPN/DownloaderAPP-installer/issues)
 - **Desarrollador**: @JHServices
 - **Dominio**: vps.jhservices.com.ar
 
-## í³ Changelog
+## ğŸ“ Changelog
 
-### v2.1 (Agosto 2025) - í¾¨ UI Moderna
-- âœ¨ **Scrollbars personalizados** con gradientes y efectos de hover
-- âœ¨ **Posicionamiento perfecto** respetando bordes redondeados
-- âœ¨ **Background-clip tÃ©cnico** para separaciÃ³n natural
-- âœ¨ **Animaciones fluidas** y efectos de glow profesionales
-- âœ¨ **Compatibilidad completa** webkit y Firefox
-- í´§ **Padding optimizado** para evitar overflow visual
-- í´§ **Responsive mejorado** para dispositivos mÃ³viles
-
-### v2.0
+### v2.0 (Actual)
 - âœ¨ Sistema de gestiÃ³n de archivos persistente
 - âœ¨ Modal para resoluciÃ³n de duplicados
 - âœ¨ API REST completa
@@ -220,11 +195,11 @@ pip3 install Flask==2.3.3 gevent==23.7.0
 - âœ¨ Nomenclatura inteligente para duplicados
 
 ### v1.0
-- í³± Subida bÃ¡sica de archivos APK
-- í¼ Interfaz web simple
-- í´— GeneraciÃ³n de enlaces de descarga
+- ğŸ“± Subida bÃ¡sica de archivos APK
+- ğŸŒ Interfaz web simple
+- ğŸ”— GeneraciÃ³n de enlaces de descarga
 
-## í³„ Licencia
+## ğŸ“„ Licencia
 
 Este proyecto estÃ¡ bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para mÃ¡s detalles.
 
@@ -232,7 +207,7 @@ Este proyecto estÃ¡ bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para
 
 <div align="center">
 
-**íº€ Desarrollado con â¤ï¸ por [@JHServices](https://github.com/JJSecureVPN)**
+**ğŸš€ Desarrollado con â¤ï¸ por [@JHServices](https://github.com/JJSecureVPN)**
 
 [![GitHub](https://img.shields.io/badge/GitHub-JJSecureVPN-blue?style=flat-square&logo=github)](https://github.com/JJSecureVPN)
 [![Domain](https://img.shields.io/badge/Domain-vps.jhservices.com.ar-orange?style=flat-square&logo=internet-explorer)](http://vps.jhservices.com.ar)
