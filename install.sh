@@ -448,9 +448,116 @@ EOF
         }
         
         function copyFileUrl(url) {
-            navigator.clipboard.writeText(url).then(() => {
-                alert('¡Enlace copiado al portapapeles!');
-            });
+            // Método moderno con fallback
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(url).then(() => {
+                    showCopySuccess('¡Enlace copiado al portapapeles!');
+                }).catch(() => {
+                    fallbackCopyText(url);
+                });
+            } else {
+                fallbackCopyText(url);
+            }
+        }
+
+        function fallbackCopyText(text) {
+            // Crear elemento temporal para copiar
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess('¡Enlace copiado al portapapeles!');
+            } catch (err) {
+                console.error('Error al copiar:', err);
+                promptCopyFallback(text);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        function promptCopyFallback(text) {
+            // Último recurso: mostrar el texto para copiar manualmente
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+            `;
+            
+            modal.innerHTML = `
+                <div style="
+                    background: white;
+                    padding: 20px;
+                    border-radius: 10px;
+                    max-width: 90%;
+                    text-align: center;
+                    color: black;
+                ">
+                    <h3>Copiar enlace manualmente</h3>
+                    <input type="text" value="${text}" style="
+                        width: 100%;
+                        padding: 10px;
+                        margin: 10px 0;
+                        border: 1px solid #ccc;
+                        border-radius: 5px;
+                    " onclick="this.select()" readonly>
+                    <br>
+                    <button onclick="document.body.removeChild(this.parentElement.parentElement)" style="
+                        background: #3498db;
+                        color: white;
+                        border: none;
+                        padding: 10px 20px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    ">Cerrar</button>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+
+        function showCopySuccess(message) {
+            // Mostrar mensaje de éxito temporal
+            const toast = document.createElement('div');
+            toast.textContent = message;
+            toast.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #4CAF50, #45a049);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                z-index: 9999;
+                box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+                animation: slideInRight 0.3s ease;
+            `;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => {
+                    if (document.body.contains(toast)) {
+                        document.body.removeChild(toast);
+                    }
+                }, 300);
+            }, 3000);
+        }
         }
         
         form.addEventListener('submit', async (e) => {
@@ -585,6 +692,14 @@ body {
     width: 100%;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     text-align: center;
+    /* Mejoras para scroll interno */
+    max-height: 90vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    /* Padding extra para que el scrollbar no toque los bordes redondeados */
+    padding-right: 35px;
+    /* Crear margen interno para el scrollbar más amplio */
+    box-sizing: border-box;
 }
 
 .container h1 {
@@ -978,55 +1093,141 @@ body {
 
 /* Responsive */
 @media (max-width: 600px) {
-    .container {
-        margin: 10px;
-        padding: 20px;
+.container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    /* Mejoras para scroll interno */
+    max-height: 90vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    /* Padding extra para que el scrollbar no toque los bordes redondeados */
+    padding-right: 35px;
+    /* Crear margen interno para el scrollbar más amplio */
+    box-sizing: border-box;
+}
+
+/* Scrollbars modernos con glassmorphism */
+/* Animaciones para toasts */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
     }
-    
-    .container h1 {
-        font-size: 2rem;
-    }
-    
-    .file-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-    }
-    
-    .file-actions {
-        justify-content: center;
-    }
-    
-    .linkContainer {
-        flex-direction: column;
-    }
-    
-    .modal-buttons {
-        flex-direction: column;
-    }
-    
-    .modal-btn {
-        width: 100%;
+    to {
+        transform: translateX(0);
+        opacity: 1;
     }
 }
 
-/* Scrollbar personalizado */
-.files-list::-webkit-scrollbar {
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Scrollbar global personalizado */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(30, 60, 114, 0.2);
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.8), rgba(41, 128, 185, 0.9));
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(52, 152, 219, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, rgba(41, 128, 185, 0.9), rgba(30, 60, 114, 1));
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.5);
+    transform: scale(1.1);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.9), rgba(39, 174, 96, 1));
+    box-shadow: 0 2px 8px rgba(46, 204, 113, 0.5);
+}
+
+/* Scrollbar específico para el contenedor principal */
+.container::-webkit-scrollbar {
     width: 8px;
+    background: transparent;
+}
+
+.container::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 8px;
+    margin: 25px 0;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    border-right: 5px solid transparent;
+    background-clip: padding-box;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.8), rgba(41, 128, 185, 0.9));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: 5px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 0 2px 6px rgba(52, 152, 219, 0.4);
+}
+
+/* Scrollbar para lista de archivos */
+.files-list::-webkit-scrollbar {
+    width: 6px;
 }
 
 .files-list::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+    margin: 8px 0;
 }
 
 .files-list::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
 }
 
 .files-list::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.5);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.4));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.3);
+}
+
+/* Soporte para Firefox */
+.container,
+.files-list {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(52, 152, 219, 0.8) rgba(255, 255, 255, 0.1);
 }
 EOF
     
